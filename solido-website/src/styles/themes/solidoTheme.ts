@@ -72,44 +72,44 @@ export const solidoTheme = createTheme({
   typography: {
     fontFamily: typography.fontFamily.primary,
     
-    // Display Styles - Bold y grande como Viralistic
+    // Display Styles - Jerarquía armónica con Arial
     h1: {
-      fontFamily: typography.fontFamily.accent,
+      fontFamily: typography.fontFamily.primary,
       fontSize: typography.fontSize['6xl'],
-      fontWeight: typography.fontWeight.black,
+      fontWeight: typography.fontWeight.bold,
       lineHeight: typography.lineHeight.tight,
-      letterSpacing: typography.letterSpacing.tighter,
+      letterSpacing: typography.letterSpacing.tight,
     },
     h2: {
-      fontFamily: typography.fontFamily.accent,
+      fontFamily: typography.fontFamily.primary,
       fontSize: typography.fontSize['5xl'],
       fontWeight: typography.fontWeight.bold,
       lineHeight: typography.lineHeight.tight,
       letterSpacing: typography.letterSpacing.tight,
     },
     h3: {
-      fontFamily: typography.fontFamily.accent,
+      fontFamily: typography.fontFamily.primary,
       fontSize: typography.fontSize['4xl'],
       fontWeight: typography.fontWeight.bold,
       lineHeight: typography.lineHeight.snug,
       letterSpacing: typography.letterSpacing.normal,
     },
     h4: {
-      fontFamily: typography.fontFamily.accent,
+      fontFamily: typography.fontFamily.primary,
       fontSize: typography.fontSize['3xl'],
       fontWeight: typography.fontWeight.semibold,
       lineHeight: typography.lineHeight.normal,
       letterSpacing: typography.letterSpacing.normal,
     },
     h5: {
-      fontFamily: typography.fontFamily.accent,
+      fontFamily: typography.fontFamily.primary,
       fontSize: typography.fontSize['2xl'],
       fontWeight: typography.fontWeight.semibold,
       lineHeight: typography.lineHeight.normal,
       letterSpacing: typography.letterSpacing.normal,
     },
     h6: {
-      fontFamily: typography.fontFamily.accent,
+      fontFamily: typography.fontFamily.primary,
       fontSize: typography.fontSize.xl,
       fontWeight: typography.fontWeight.medium,
       lineHeight: typography.lineHeight.normal,
@@ -132,11 +132,11 @@ export const solidoTheme = createTheme({
       letterSpacing: typography.letterSpacing.normal,
     },
 
-    // Button Text - Bold
+    // Button Text - Medium weight
     button: {
       fontFamily: typography.fontFamily.primary,
       fontSize: typography.fontSize.base,
-      fontWeight: typography.fontWeight.bold,
+      fontWeight: typography.fontWeight.medium,
       lineHeight: typography.lineHeight.none,
       letterSpacing: typography.letterSpacing.normal,
       textTransform: 'none' as const,
@@ -155,7 +155,7 @@ export const solidoTheme = createTheme({
     overline: {
       fontFamily: typography.fontFamily.primary,
       fontSize: typography.fontSize.sm,
-      fontWeight: typography.fontWeight.bold,
+      fontWeight: typography.fontWeight.medium,
       lineHeight: typography.lineHeight.normal,
       letterSpacing: typography.letterSpacing.widest,
       textTransform: 'uppercase',

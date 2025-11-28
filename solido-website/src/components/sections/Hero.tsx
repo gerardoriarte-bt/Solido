@@ -78,7 +78,7 @@ const Hero: React.FC<HeroProps> = ({
             overflow: 'hidden',
           }}
     >
-      {/* Fondo Futurista Interactivo */}
+      {/* Fondo con Imagen del Bosque */}
       <Box
         sx={{
           position: 'absolute',
@@ -86,22 +86,50 @@ const Hero: React.FC<HeroProps> = ({
           left: 0,
           right: 0,
           bottom: 0,
-          background: `
-            radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, 
-              rgba(184, 197, 184, 0.1) 0%, 
-              transparent 50%),
-            linear-gradient(135deg, 
-              #1F2330 0%, 
-              #1A1E28 25%, 
-              #242C27 50%, 
-              #1E2521 75%, 
-              #1F2330 100%)
-          `,
+          backgroundImage: 'url(/bosque-fondo.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
           zIndex: 1,
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: `
+              radial-gradient(ellipse 80% 50% at ${mousePosition.x}% ${mousePosition.y}%, 
+                rgba(184, 197, 184, 0.15) 0%, 
+                transparent 60%),
+              linear-gradient(180deg, 
+                rgba(31, 35, 48, 0.85) 0%, 
+                rgba(26, 30, 40, 0.9) 100%)
+            `,
+            zIndex: 1,
+          },
+        }}
+      />
+      
+      {/* Líneas de Grid Sutiles */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `
+            linear-gradient(rgba(184, 197, 184, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(184, 197, 184, 0.05) 1px, transparent 1px)
+          `,
+          backgroundSize: '100px 100px',
+          zIndex: 2,
+          opacity: 0.4,
         }}
       />
 
-      {/* Elementos Geométricos Flotantes */}
+      {/* Elementos Geométricos Premium Sutiles */}
       <Box
         sx={{
           position: 'absolute',
@@ -109,125 +137,99 @@ const Hero: React.FC<HeroProps> = ({
           left: 0,
           right: 0,
           bottom: 0,
-          zIndex: 2,
+          zIndex: 3,
+          pointerEvents: 'none',
         }}
       >
-        {/* Círculos flotantes */}
+        {/* Líneas horizontales sutiles */}
         <motion.div
           animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            rotate: [0, 180, 360],
+            opacity: [0.2, 0.4, 0.2],
           }}
           transition={{
-            duration: 20,
+            duration: 8,
             repeat: Infinity,
-            ease: "linear",
+            ease: "easeInOut",
           }}
           style={{
             position: 'absolute',
-            top: '20%',
+            top: '25%',
             left: '10%',
-            width: '60px',
-            height: '60px',
-            border: '1px solid rgba(184, 197, 184, 0.3)',
-            borderRadius: '50%',
-            background: 'rgba(184, 197, 184, 0.05)',
+            right: '10%',
+            height: '1px',
+            background: 'linear-gradient(90deg, transparent, rgba(184, 197, 184, 0.3), transparent)',
           }}
         />
         
         <motion.div
           animate={{
-            x: [0, -80, 0],
-            y: [0, 60, 0],
-            rotate: [360, 180, 0],
+            opacity: [0.15, 0.35, 0.15],
           }}
           transition={{
-            duration: 25,
+            duration: 10,
             repeat: Infinity,
-            ease: "linear",
+            ease: "easeInOut",
+            delay: 2,
           }}
           style={{
             position: 'absolute',
-            top: '60%',
+            bottom: '30%',
+            left: '15%',
             right: '15%',
-            width: '40px',
-            height: '40px',
-            border: '1px solid rgba(184, 197, 184, 0.2)',
-            borderRadius: '50%',
-            background: 'rgba(184, 197, 184, 0.03)',
+            height: '1px',
+            background: 'linear-gradient(90deg, transparent, rgba(184, 197, 184, 0.25), transparent)',
           }}
         />
 
-        {/* Líneas dinámicas */}
+        {/* Puntos de luz sutiles */}
         <motion.div
           animate={{
-            scaleX: [0, 1, 0],
-            opacity: [0, 0.5, 0],
+            scale: [1, 1.5, 1],
+            opacity: [0.3, 0.6, 0.3],
           }}
           transition={{
-            duration: 3,
+            duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
           }}
           style={{
             position: 'absolute',
-            top: '30%',
+            top: '20%',
             right: '20%',
-            width: '200px',
-            height: '1px',
-            background: 'linear-gradient(90deg, transparent, rgba(184, 197, 184, 0.5), transparent)',
-            transform: 'rotate(45deg)',
+            width: '4px',
+            height: '4px',
+            borderRadius: '50%',
+            background: 'rgba(184, 197, 184, 0.6)',
+            boxShadow: '0 0 20px rgba(184, 197, 184, 0.4)',
           }}
         />
-
+        
         <motion.div
           animate={{
-            scaleX: [0, 1, 0],
-            opacity: [0, 0.3, 0],
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.5, 0.2],
           }}
           transition={{
-            duration: 4,
+            duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 1,
+            delay: 3,
           }}
           style={{
             position: 'absolute',
             bottom: '25%',
-            left: '20%',
-            width: '150px',
-            height: '1px',
-            background: 'linear-gradient(90deg, transparent, rgba(184, 197, 184, 0.5), transparent)',
-            transform: 'rotate(-30deg)',
-          }}
-        />
-
-        {/* Cuadrados rotantes */}
-        <motion.div
-          animate={{
-            rotate: [0, 360],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          style={{
-            position: 'absolute',
-            top: '15%',
-            right: '30%',
-            width: '30px',
-            height: '30px',
-            border: '1px solid rgba(184, 197, 184, 0.4)',
-            background: 'rgba(184, 197, 184, 0.05)',
+            left: '25%',
+            width: '3px',
+            height: '3px',
+            borderRadius: '50%',
+            background: 'rgba(184, 197, 184, 0.5)',
+            boxShadow: '0 0 15px rgba(184, 197, 184, 0.3)',
           }}
         />
       </Box>
 
       {/* Contenido Principal */}
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 3 }}>
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 4 }}>
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -235,85 +237,72 @@ const Hero: React.FC<HeroProps> = ({
         >
           <Box
             sx={{
-              textAlign: 'center',
-              maxWidth: '900px',
+              textAlign: 'left',
+              maxWidth: { xs: '100%', md: '900px', lg: '1100px' },
               mx: 'auto',
+              px: { xs: 4, md: 6 },
             }}
           >
-            {/* Logo */}
-            <motion.div variants={itemVariants}>
-              <Box
-                component="img"
-                src="/logo_solido_negro.png"
-                alt="Sólido Business Law"
-                sx={{
-                  height: { xs: 60, md: 80 },
-                  mb: 6,
-                  filter: 'invert(1) brightness(1.2)',
-                }}
-              />
-            </motion.div>
-
-            {/* Main Title */}
+            {/* Subtítulo Superior Premium */}
             <motion.div variants={itemVariants}>
               <Typography
-                variant="h1"
-                component="h1"
+                variant="overline"
                 sx={{
-                  fontSize: { xs: '2.5rem', md: '4rem', lg: '5rem' },
-                  fontWeight: 900,
-                  lineHeight: 1.1,
-                  mb: 4,
-                  color: '#FFFFFF',
-                  letterSpacing: '-0.02em',
-                  textShadow: '0 0 30px rgba(184, 197, 184, 0.3)',
-                }}
-              >
-                {title}
-              </Typography>
-            </motion.div>
-
-            {/* Subtitle */}
-            <motion.div variants={itemVariants}>
-              <Typography
-                variant="h2"
-                component="h2"
-                sx={{
-                  fontSize: { xs: '1.25rem', md: '1.75rem' },
+                  fontSize: '0.6875rem',
                   fontWeight: 400,
+                  letterSpacing: '0.08em',
                   color: '#B8C5B8',
-                  mb: 6,
-                  letterSpacing: '0.05em',
+                  mb: 3,
+                  textTransform: 'uppercase',
                   opacity: 0.9,
+                  display: 'block',
                 }}
               >
                 {subtitle}
               </Typography>
             </motion.div>
 
-            {/* Description */}
+            {/* Main Title - Estilo Apple */}
+            <motion.div variants={itemVariants}>
+              <Typography
+                variant="h1"
+                component="h1"
+                sx={{
+                  fontSize: { xs: '2.5rem', md: '3.5rem', lg: '4.5rem' },
+                  fontWeight: 700,
+                  lineHeight: 1.1,
+                  mb: 4,
+                  color: '#FFFFFF',
+                  letterSpacing: '-0.01em',
+                  fontFamily: 'Arial, sans-serif',
+                }}
+              >
+                {title}
+              </Typography>
+            </motion.div>
+
+            {/* Description - Tipografía Refinada Apple */}
             <motion.div variants={itemVariants}>
               <Typography
                 variant="body1"
                 sx={{
-                  fontSize: { xs: '1rem', md: '1.25rem' },
-                  lineHeight: 1.6,
+                  fontSize: { xs: '0.9375rem', md: '1.0625rem', lg: '1.1875rem' },
+                  lineHeight: 1.7,
                   mb: 8,
-                  color: '#FFFFFF',
+                  color: '#B8C5B8',
                   fontWeight: 400,
-                  maxWidth: '700px',
-                  mx: 'auto',
-                  opacity: 0.85,
+                  maxWidth: '600px',
+                  letterSpacing: '0em',
                 }}
               >
                 {description}
               </Typography>
             </motion.div>
 
-            {/* CTA Button */}
+            {/* CTA Button - Premium y Minimalista */}
             <motion.div variants={itemVariants}>
               <Button
-                variant="contained"
+                variant="outlined"
                 size="large"
                 onClick={() => {
                   if (ctaHref.startsWith('#')) {
@@ -324,22 +313,25 @@ const Hero: React.FC<HeroProps> = ({
                   }
                 }}
                 sx={{
-                  fontSize: '1.125rem',
-                  px: 8,
-                  py: 3,
+                  fontSize: '0.8125rem',
+                  px: 5,
+                  py: 2,
                   borderRadius: 0,
-                  textTransform: 'none',
-                  fontWeight: 700,
-                  backgroundColor: '#B8C5B8',
-                  color: '#1F2330',
-                  border: '2px solid #77E077',
+                  textTransform: 'uppercase',
+                  fontWeight: 400,
+                  letterSpacing: '0.1em',
+                  backgroundColor: 'transparent',
+                  color: '#B8C5B8',
+                  border: '1px solid rgba(184, 197, 184, 0.5)',
                   position: 'relative',
                   overflow: 'hidden',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                   '&:hover': {
-                    backgroundColor: '#D4E0D4',
-                    borderColor: '#D4E0D4',
-                    transform: 'translateY(-3px)',
-                    boxShadow: '0 10px 30px rgba(184, 197, 184, 0.4)',
+                    backgroundColor: 'rgba(184, 197, 184, 0.15)',
+                    borderColor: '#B8C5B8',
+                    color: '#FFFFFF',
+                    transform: 'translateY(-1px)',
+                    boxShadow: '0 4px 20px rgba(184, 197, 184, 0.2)',
                   },
                   '&::before': {
                     content: '""',
@@ -348,13 +340,12 @@ const Hero: React.FC<HeroProps> = ({
                     left: '-100%',
                     width: '100%',
                     height: '100%',
-                    background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
-                    transition: 'left 0.5s',
+                    background: 'linear-gradient(90deg, transparent, rgba(184, 197, 184, 0.1), transparent)',
+                    transition: 'left 0.6s ease',
                   },
                   '&:hover::before': {
                     left: '100%',
                   },
-                  transition: 'all 0.3s ease',
                 }}
               >
                 {ctaText}

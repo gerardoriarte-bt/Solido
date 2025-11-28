@@ -3,7 +3,7 @@
  * Diseño minimalista inspirado en Viralistic
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -30,6 +30,17 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ items }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setScrolled(scrollPosition > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -44,35 +55,39 @@ const Navigation: React.FC<NavigationProps> = ({ items }) => {
   };
 
   const drawer = (
-    <Box sx={{ width: 280 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 3 }}>
+      <Box sx={{ width: 320, backgroundColor: '#1F2330', height: '100%' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 4, borderBottom: '1px solid rgba(184, 197, 184, 0.1)' }}>
         <Box
           component="img"
-          src="/logo_solido_negro.png"
+          src="/logo_solido_blanco.png"
           alt="Sólido Business Law"
           sx={{
-            height: 40,
+            height: 45,
             cursor: 'pointer',
+            filter: 'brightness(1.1)',
           }}
           onClick={() => scrollToSection('home', 0)}
         />
-        <IconButton onClick={handleDrawerToggle} sx={{ color: '#000000' }}>
+        <IconButton onClick={handleDrawerToggle} sx={{ color: '#FFFFFF' }}>
           <CloseIcon />
         </IconButton>
       </Box>
-      <List sx={{ px: 2 }}>
+      <List sx={{ px: 3, pt: 4 }}>
         {items.map((item) => (
           <ListItem
             key={item.label}
             onClick={() => handleNavClick(item.href)}
             sx={{
               cursor: 'pointer',
-              py: 2,
+              py: 2.5,
               px: 3,
-              borderRadius: 1,
-              mb: 1,
+              borderRadius: 0,
+              mb: 0.5,
+              borderLeft: '2px solid transparent',
+              transition: 'all 0.3s ease',
               '&:hover': {
-                backgroundColor: '#F8F8F8',
+                backgroundColor: 'rgba(184, 197, 184, 0.05)',
+                borderLeftColor: '#B8C5B8',
               },
             }}
           >
@@ -80,9 +95,10 @@ const Navigation: React.FC<NavigationProps> = ({ items }) => {
               primary={item.label}
               sx={{
                 '& .MuiListItemText-primary': {
-                  fontWeight: 500,
-                  fontSize: '1.1rem',
-                  color: '#000000',
+                  fontWeight: 400,
+                  fontSize: '0.95rem',
+                  letterSpacing: '0.05em',
+                  color: '#FFFFFF',
                 },
               }}
             />
@@ -97,55 +113,74 @@ const Navigation: React.FC<NavigationProps> = ({ items }) => {
       <AppBar
         position="fixed"
         sx={{
-          backgroundColor: '#FFFFFF',
-          color: '#000000',
-          boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-          borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
+          backgroundColor: scrolled 
+            ? 'rgba(31, 35, 48, 0.7)' 
+            : 'rgba(31, 35, 48, 0.85)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          color: '#FFFFFF',
+          boxShadow: scrolled 
+            ? '0 2px 20px rgba(0, 0, 0, 0.15)' 
+            : '0 4px 30px rgba(0, 0, 0, 0.3)',
+          borderBottom: '1px solid rgba(184, 197, 184, 0.08)',
+          transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
       >
-        <Toolbar sx={{ justifyContent: 'space-between', py: 1 }}>
+        <Toolbar sx={{ justifyContent: 'space-between', py: 1.5, px: { xs: 2, md: 6 } }}>
           {/* Logo */}
           <Box
             component="img"
-            src="/logo_solido_negro.png"
+            src="/logo_solido_blanco.png"
             alt="Sólido Business Law"
             sx={{
-              height: 45,
+              height: { xs: 36, md: 42 },
               cursor: 'pointer',
-              transition: 'opacity 0.3s ease',
+              transition: 'all 0.3s ease',
+              filter: 'brightness(1.1)',
+              opacity: scrolled ? 0.9 : 1,
               '&:hover': {
                 opacity: 0.8,
+                transform: 'scale(1.05)',
               },
             }}
             onClick={() => scrollToSection('home', 0)}
           />
 
           {/* Desktop Navigation */}
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 0.5 }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 0.5, alignItems: 'center' }}>
             {items.map((item) => (
               <Button
                 key={item.label}
                 onClick={() => handleNavClick(item.href)}
                 sx={{
-                  color: '#000000',
-                  fontWeight: 500,
+                  color: '#FFFFFF',
+                  fontWeight: 400,
                   textTransform: 'none',
-                  fontSize: '0.95rem',
-                  px: 3,
+                  fontSize: '0.75rem',
+                  letterSpacing: '0.08em',
+                  px: 2,
                   py: 1,
                   borderRadius: 0,
                   position: 'relative',
+                  transition: 'all 0.3s ease',
+                  opacity: scrolled ? 0.85 : 1,
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: 0,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: 0,
+                    height: '1.5px',
+                    backgroundColor: '#B8C5B8',
+                    transition: 'width 0.3s ease',
+                  },
                   '&:hover': {
                     backgroundColor: 'transparent',
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      bottom: 0,
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      width: '20px',
-                      height: '2px',
-                      backgroundColor: '#000000',
+                    color: '#B8C5B8',
+                    opacity: 1,
+                    '&::before': {
+                      width: '50%',
                     },
                   },
                 }}
@@ -163,9 +198,9 @@ const Navigation: React.FC<NavigationProps> = ({ items }) => {
             onClick={handleDrawerToggle}
             sx={{ 
               display: { md: 'none' },
-              color: '#000000',
+              color: '#FFFFFF',
               '&:hover': {
-                backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                backgroundColor: 'rgba(184, 197, 184, 0.1)',
               },
             }}
           >
@@ -187,9 +222,9 @@ const Navigation: React.FC<NavigationProps> = ({ items }) => {
           display: { xs: 'block', md: 'none' },
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
-            width: 280,
-            backgroundColor: '#FFFFFF',
-            borderLeft: '1px solid rgba(0, 0, 0, 0.08)',
+            width: 320,
+            backgroundColor: '#1F2330',
+            borderLeft: '1px solid rgba(184, 197, 184, 0.1)',
           },
         }}
       >

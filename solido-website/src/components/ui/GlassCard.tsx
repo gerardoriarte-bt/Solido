@@ -69,23 +69,25 @@ const GlassCard: React.FC<GlassCardProps> = ({
     >
       <Box
         sx={{
-          p: 6,
-          borderRadius: 4,
-          background: '#242C27',
-          border: '1px solid rgba(184, 197, 184, 0.2)',
+          p: { xs: 5, md: 6 },
+          borderRadius: 0,
+          background: 'rgba(36, 44, 39, 0.6)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          border: '1px solid rgba(184, 197, 184, 0.15)',
           position: 'relative',
           overflow: 'hidden',
-          minHeight: '360px',
+          minHeight: { xs: 'auto', md: '320px' },
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+          transition: 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          boxShadow: '0 2px 15px rgba(0, 0, 0, 0.2)',
           '&:hover': {
-            transform: 'translateY(-12px) scale(1.02)',
-            background: '#2F3A33',
-            border: '1px solid rgba(184, 197, 184, 0.4)',
-            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)',
+            transform: 'translateY(-8px)',
+            background: 'rgba(47, 58, 51, 0.7)',
+            border: '1px solid rgba(184, 197, 184, 0.3)',
+            boxShadow: '0 15px 40px rgba(0, 0, 0, 0.3)',
           },
         }}
       >
@@ -124,13 +126,13 @@ const GlassCard: React.FC<GlassCardProps> = ({
           <Typography
             variant="h5"
             sx={{
-              fontWeight: 700,
-              mb: 4,
-              color: '#FFFFFF',
-              fontSize: '1.5rem',
-              lineHeight: 1.3,
-              textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)',
-              letterSpacing: '-0.01em',
+              fontWeight: 400,
+              mb: 3,
+              color: '#B8C5B8',
+              fontSize: { xs: '0.9375rem', md: '1rem' },
+              lineHeight: 1.4,
+              letterSpacing: '0.05em',
+              textTransform: 'uppercase',
             }}
           >
             {title}
@@ -139,12 +141,11 @@ const GlassCard: React.FC<GlassCardProps> = ({
           <Typography
             variant="body1"
             sx={{
-              color: '#E8F0E8',
-              lineHeight: 1.6,
-              mb: 5,
-              fontSize: '1.125rem',
+              color: '#D4E0D4',
+              lineHeight: 1.7,
+              mb: 4,
+              fontSize: { xs: '0.875rem', md: '0.9375rem' },
               fontWeight: 400,
-              textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)',
             }}
           >
             {description}
@@ -165,22 +166,20 @@ const GlassCard: React.FC<GlassCardProps> = ({
                     sx={{
                       color: '#D4E0D4',
                       mb: 1.5,
-                      fontSize: '0.95rem',
+                      fontSize: '0.8125rem',
                       fontWeight: 400,
                       position: 'relative',
-                      pl: 3,
-                      textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)',
+                      pl: 2.5,
+                      lineHeight: 1.6,
                       '&::before': {
                         content: '""',
                         position: 'absolute',
                         left: 0,
-                        top: '50%',
-                        transform: 'translateY(-50%)',
-                        width: '6px',
-                        height: '6px',
+                        top: '0.6em',
+                        width: '4px',
+                        height: '4px',
                         borderRadius: '50%',
                         backgroundColor: '#B8C5B8',
-                        boxShadow: '0 0 8px rgba(184, 197, 184, 0.4)',
                       },
                     }}
                   >
@@ -205,24 +204,23 @@ const GlassCard: React.FC<GlassCardProps> = ({
               size="medium"
               sx={{
                 width: '100%',
-                fontSize: '0.95rem',
-                px: 4,
-                py: 2,
-                borderRadius: 3,
-                fontWeight: 600,
-                borderColor: 'rgba(184, 197, 184, 0.3)',
-                color: '#FFFFFF',
+                fontSize: '0.6875rem',
+                px: 3,
+                py: 1.5,
+                borderRadius: 0,
+                fontWeight: 400,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                borderColor: 'rgba(184, 197, 184, 0.4)',
+                color: '#B8C5B8',
                 borderWidth: '1px',
-                background: '#1F2330',
-                textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)',
+                background: 'transparent',
                 position: 'relative',
                 overflow: 'hidden',
                 '&:hover': {
-                  backgroundColor: '#2F3A33',
+                  backgroundColor: 'rgba(184, 197, 184, 0.12)',
                   color: '#FFFFFF',
-                  borderColor: 'rgba(184, 197, 184, 0.5)',
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 8px 25px rgba(184, 197, 184, 0.2)',
+                  borderColor: '#B8C5B8',
                 },
                 '&::before': {
                   content: '""',
@@ -231,8 +229,8 @@ const GlassCard: React.FC<GlassCardProps> = ({
                   left: '-100%',
                   width: '100%',
                   height: '100%',
-                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
-                  transition: 'left 0.5s',
+                  background: 'linear-gradient(90deg, transparent, rgba(184, 197, 184, 0.08), transparent)',
+                  transition: 'left 0.5s ease',
                 },
                 '&:hover::before': {
                   left: '100%',

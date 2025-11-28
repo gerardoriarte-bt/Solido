@@ -4,11 +4,11 @@
  */
 
 export const typography = {
-  // Font Families - Solo Inter para simplicidad
+  // Font Families - Arial con fallbacks
   fontFamily: {
-    primary: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-    accent: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-    mono: '"SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Source Code Pro", monospace',
+    primary: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+    accent: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+    mono: '"Courier New", Courier, monospace',
   },
 
   // Font Weights - Enfoque en bold
